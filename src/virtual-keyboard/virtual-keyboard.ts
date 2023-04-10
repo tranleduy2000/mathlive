@@ -33,6 +33,10 @@ import {
 
 import { hideVariantsPanel, showVariantsPanel } from './variants';
 
+// Android-changed: support older android devices
+// https://github.com/necolas/react-native-web/issues/934
+import 'resize-observer-polyfill/dist/ResizeObserver.global';
+
 export class VirtualKeyboard implements VirtualKeyboardInterface, EventTarget {
   private _visible: boolean;
   private _element?: HTMLDivElement;

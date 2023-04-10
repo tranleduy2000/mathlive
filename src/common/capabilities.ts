@@ -62,6 +62,15 @@ export function supportRegexPropertyEscape(): boolean {
     const version = parseInt(m[1]);
     return version >= 78; // https://www.mozilla.org/en-US/firefox/78.0/releasenotes/
   }
+
+  // Android-changed: check chrome version
+  if (/chrome/i.test(navigator.userAgent)) {
+    const m = navigator.userAgent.match(/chrome\/(\d+)/i);
+    if (!m) return false;
+    const version = parseInt(m[1]);
+    return version >= 73; // just a simple hack to work around with older android devices
+  }
+
   if (/trident/i.test(navigator.userAgent)) return false;
 
   if (/edge/i.test(navigator.userAgent)) {
